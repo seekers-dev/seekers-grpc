@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "org/seekers/game/vector2d.proto";
+option java_multiple_files = true;
+option optimize_for = SPEED;
+option java_package = "org.seekers.grpc.game";
+message Camp {
+	string id = 1;
+	string player_id = 2;
+	Vector2D position = 3;
+	double width = 4;
+	double height = 5;
+}
