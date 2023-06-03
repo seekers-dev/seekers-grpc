@@ -4,9 +4,17 @@ import "org/seekers/game/vector2d.proto";
 option java_multiple_files = true;
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
+// The Physical message represents a physical object in the game.
 message Physical {
+	// The unique identifier of the object.
 	string id = 1;
+
+	// The acceleration of the object.
 	Vector2D acceleration = 2;
+
+	// The position of the object.
 	Vector2D position = 3;
+
+	// The velocity of the object.
 	Vector2D velocity = 4;
 }

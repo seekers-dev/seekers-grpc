@@ -3,11 +3,23 @@ syntax = "proto3";
 option java_multiple_files = true;
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
+// The Player message represents a player in the game.
 message Player {
+	// The unique identifier of the player.
 	string id = 1;
+
+	// The IDs of the seekers associated with the player.
 	repeated string seeker_ids = 2;
+
+	// The ID of the camp associated with the player.
 	string camp_id = 3;
+
+	// The name of the player.
 	string name = 4;
+
+	// The color associated with the player.
 	string color = 5;
+
+	// The score of the player.
 	int32 score = 6;
 }

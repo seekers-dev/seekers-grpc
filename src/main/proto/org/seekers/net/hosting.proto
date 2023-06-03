@@ -4,52 +4,97 @@ option java_multiple_files = true;
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.net";
 option java_outer_classname = "HostingProto";
+
+// The Hosting service provides operations related to hosting game instances.
 service Hosting {
+	// Retrieves a list of available game instances.
 	rpc List (ListRequest) returns (ListResponse);
+
+	// Hosts a new game instance.
 	rpc Host (HostRequest) returns (HostResponse);
+
+	// Joins an existing game instance.
 	rpc Join (JoinRequest) returns (JoinResponse);
+
+	// Sends a ping request to measure latency.
 	rpc Ping (PingRequest) returns (PingResponse);
 }
 
+// Represents the description of a game instance.
 message GameDescription {
+	// The unique identifier of the game instance.
 	string id = 1;
+  
+	// The name of the game.
 	string name = 2;
+  
+	// The map used in the game instance.
 	string map = 3;
+  
+	// The number of currently connected players.
 	int32 current_players = 4;
+  
+	// The maximum number of players that can join the game instance.
 	int32 max_players = 5;
+  
+	// Indicates if the game has started.
 	bool started = 6;
+  
+	// Indicates if the game is currently running.
 	bool running = 7;
+  
+	// The IP address of the game server.
 	string address = 8;
+  
+	// The port number used by the game server.
 	int64 port = 9;
 }
 
+// Request message for retrieving the list of available game instances.
 message ListRequest {
 }
 
+// Response message containing the list of available game instances.
 message ListResponse {
+	// List of game descriptions.
 	repeated GameDescription descriptions = 1;
 }
 
+// Request message for hosting a new game instance.
 message HostRequest {
+	// Description of the game instance to be hosted.
 	GameDescription description = 1;
 }
 
+// Response message containing the token for the hosted game instance.
 message HostResponse {
+	// Token used for authentication or authorization purposes.
 	string token = 1;
 }
 
+// Request message for joining an existing game instance.
 message JoinRequest {
+	// Map of additional details required for joining the game.
+	// 'name': team name (e.g. "BestTeamName#123$@ś")
+	// 'color': web color (e.g "0xFFFFFF")
 	map < string, string > details = 2;
 }
 
+// Response message containing the token and player ID for joining the game.
 message JoinResponse {
+	// Token used for authentication or authorization purposes.
 	string token = 1;
+	
+	// The ID assigned to the player upon joining.
 	string player_id = 2;
 }
 
+// Request message for sending a ping request.
 message PingRequest {
 }
 
+// Response message containing the measured latency in milliseconds.
 message PingResponse {
+	// The measured latency in milliseconds (signed integer).
 	sint64 ping = 1;
 }
