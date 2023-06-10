@@ -15,22 +15,17 @@ service Seekers {
 
 	rpc Properties (Empty) returns (PropertiesResponse);
 
-	rpc Status (StatusRequest) returns (StatusResponse);
+	rpc Status (Empty) returns (StatusResponse);
 
 	rpc Command (CommandRequest) returns (Empty);
 
 	rpc Update (CommandRequest) returns (StatusResponse);
 
-	rpc Ping (Empty) returns (Empty);
+	rpc Ping (Empty) returns (PingResponse);
 }
 
 message PropertiesResponse {
 	 map < string, string > entries = 1;
-}
-
-message StatusRequest {
-	// Authentication.
-	string token = 1;
 }
 
 message StatusResponse {
