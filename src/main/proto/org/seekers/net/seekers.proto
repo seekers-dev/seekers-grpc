@@ -10,60 +10,68 @@ option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.net";
 option java_outer_classname = "SeekersProto";
 
-// The Seekers service provides operations related to the Seekers game.
 service Seekers {
-	// Retrieves the properties of the Seekers game.
-	rpc Properties (PropertiesRequest) returns (PropertiesResponse);
+	rpc Join (JoinRequest) returns (JoinResponse);
 
-	// Retrieves the current status of the Seekers game.
-	rpc Status (StatusRequest) returns (StatusResponse);
+	rpc Properties (Empty) returns (PropertiesResponse);
 
-	// Sends a command to the Seekers game.
-	rpc Command (CommandRequest) returns (CommandResponse);
+	rpc Status (Empty) returns (StatusResponse);
+
+	rpc Command (CommandRequest) returns (Empty);
+
+	rpc Update (CommandRequest) returns (StatusResponse);
+
+	rpc Ping (Empty) returns (PingResponse);
 }
 
-// Request message for retrieving the properties of the Seekers game.
-message PropertiesRequest {
-}
-
-// Response message containing the properties of the Seekers game.
 message PropertiesResponse {
-	 // A map of string key-value pairs representing the properties of the game.
 	 map < string, string > entries = 1;
 }
 
-// Request message for retrieving the status of the Seekers game.
-message StatusRequest {
-	// Token used for authentication purposes.
-	string token = 1;
-}
-
-// Response message containing the current status of the Seekers game.
 message StatusResponse {
-	// List of players in the game.
 	repeated Player players = 1;
-	// List of camps in the game.
 	repeated Camp camps = 2;
-	// List of seekers in the game.
 	repeated Seeker seekers = 3;
-	// List of goals in the game.
 	repeated Goal goals = 4;
-	// The amount of time that has passed during gameplay.
+
+	// Number of ticks passed since the game started.
 	double passed_playtime = 5;
 }
 
-// Request message for sending a command to the Seekers game.
-message CommandRequest {
-	// Token used for authorization purposes.
-	string token = 1;
+message Command {
 	// ID of the seeker for which the command is intended.
 	string seeker_id = 2;
-	// Target vector for the seeker's movement.
+
 	Vector2D target = 3;
-	// Strength of the magnet to influence the seeker's movement.
 	double magnet = 4;
 }
 
-// Response message for a command sent to the Seekers game.
-message CommandResponse {
+message CommandRequest {
+	// Token used for authorization purposes.
+	string token = 1;
+
+	// List of commands to be executed.
+	repeated Command commands = 2;
 }
+
+message JoinRequest {
+	// Map of additional details required for joining the game.
+	// 'name': team name (e.g. "BestTeamName#123$@ś")
+	// 'color': web color (e.g "0xFFFFFF")
+	map < string, string > details = 2;
+}
+
+message JoinResponse {
+	// Authorization.
+	string token = 1;
+
+	// The ID assigned to the player upon joining.
+	string player_id = 2;
+}
+
+message PingResponse {
+	// Unix timestamp in milliseconds of the time the Ping request was received.
+	float timestamp_ms = 1;
+}
+
+message Empty {}
