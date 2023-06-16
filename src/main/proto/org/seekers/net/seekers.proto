@@ -77,7 +77,7 @@ message CommandResponse {
 
 message PingResponse {
 	// Timestamp in milliseconds of the time the ping request was received.
-	uint64 timestamp_ms = 1;
+	uint64 timestamp = 1;
 }
 
 message Empty {}
