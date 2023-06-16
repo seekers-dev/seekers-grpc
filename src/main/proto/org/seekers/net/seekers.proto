@@ -17,12 +17,26 @@ service Seekers {
 
 	rpc Status (Empty) returns (StatusResponse);
 
-	rpc Command (CommandRequest) returns (Empty);
-
-	rpc Update (CommandRequest) returns (StatusResponse);
+	rpc Command (CommandRequest) returns (CommandResponse);
 
 	rpc Ping (Empty) returns (PingResponse);
 }
+
+message JoinRequest {
+	// Map of additional details required for joining the game.
+	// 'name': team name (e.g. "BestTeamName#123$@ś")
+	// 'color': web color (e.g "0xFFFFFF")
+	map < string, string > details = 2;
+}
+
+message JoinResponse {
+	// Authorization.
+	string token = 1;
+
+	// The ID assigned to the player upon joining.
+	string player_id = 2;
+}
+
 
 message PropertiesResponse {
 	 map < string, string > entries = 1;
@@ -54,24 +68,16 @@ message CommandRequest {
 	repeated Command commands = 2;
 }
 
-message JoinRequest {
-	// Map of additional details required for joining the game.
-	// 'name': team name (e.g. "BestTeamName#123$@ś")
-	// 'color': web color (e.g "0xFFFFFF")
-	map < string, string > details = 2;
-}
-
-message JoinResponse {
-	// Authorization.
-	string token = 1;
-
-	// The ID assigned to the player upon joining.
-	string player_id = 2;
+message CommandResponse {
+	// The StatusResponse after the command
+	StatusResponse status = 1;
+	// Numbers of seekers changed by the commmand
+	uint64 seekers_changed = 2;
 }
 
 message PingResponse {
-	// Unix timestamp in milliseconds of the time the Ping request was received.
-	float timestamp_ms = 1;
+	// Timestamp in nanoseconds of the time the ping request was received.
+	uint64 timestamp = 1;
 }
 
 message Empty {}
