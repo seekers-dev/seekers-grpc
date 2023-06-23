@@ -71,7 +71,7 @@ message CommandRequest {
 message CommandResponse {
 	// The StatusResponse after the command
 	StatusResponse status = 1;
-	// Numbers of seekers changed by the commmand
+	// Numbers of seekers changed by the command
 	uint64 seekers_changed = 2;
 }
 
