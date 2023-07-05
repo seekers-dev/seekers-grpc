@@ -69,4 +69,4 @@ Please make sure to follow the project's coding style, guidelines, and standards
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU General Public License v3.0.
