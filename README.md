@@ -1,16 +1,26 @@
-# seekers grpc
+<h1 align=center>Seekers gRPC</h1>
 
-[![Jitpack](https://jitpack.io/v/seekers-dev/seekers-grpc.svg)](https://jitpack.io/#seekers-dev/seekers-grpc)
+<p align=center>
+	<a href="https://jitpack.io/#seekers-dev/seekers-grpc">
+		<img alt="Jitpack" src="https://jitpack.io/v/seekers-dev/seekers-grpc.svg">
+	</a>
+	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/codeql.yml">
+		<img alt="CodeQL" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/codeql.yml/badge.svg">
+	</a>
+	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven.yml">
+		<img alt="Java CI with Maven" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven.yml/badge.svg">
+	</a>
+</p>
 
 Seekers gRPC is a repository that provides a gRPC-based communication interface for the Seekers application. It enables efficient and reliable communication between clients and servers using the gRPC framework.
 
 ## Installation
 
-Note: Replace ``tag`` with the specific release or commit tag you want to use.
+ℹ️ Note: Replace ``tag`` with the specific release or commit tag you want to use.
 
 ### Maven
 
-To use scvis in your Maven project, you need to add the JitPack repository and the dependency to your pom.xml file.
+To use seekers-grpc in your Maven project, you need to add the JitPack repository and the dependency to your pom.xml file.
 
 Add the following repository to the ``<repositories>`` section of your pom.xml file:
 
@@ -35,7 +45,7 @@ Then, add the scvis dependency to the ``<dependencies>`` section:
 
 ### Gradle
 
-To use scvis in your Gradle project, you need to add the JitPack repository and the dependency to your build.gradle file.
+To use seekers-grpc in your Gradle project, you need to add the JitPack repository and the dependency to your build.gradle file.
 
 Add the following repository to the repositories section of your ``build.gradle`` file:
 
