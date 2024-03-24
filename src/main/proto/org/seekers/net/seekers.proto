@@ -5,79 +5,74 @@ import "org/seekers/game/camp.proto";
 import "org/seekers/game/goal.proto";
 import "org/seekers/game/player.proto";
 import "org/seekers/game/seeker.proto";
-option java_multiple_files = true;
+
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.net";
-option java_outer_classname = "SeekersProto";
 
+// Service for communicating with a seekers game.
 service Seekers {
-	rpc Join (JoinRequest) returns (JoinResponse);
-
-	rpc Properties (Empty) returns (PropertiesResponse);
-
-	rpc Status (Empty) returns (StatusResponse);
-
-	rpc Command (CommandRequest) returns (CommandResponse);
-
-	rpc Ping (Empty) returns (PingResponse);
+  rpc Join (JoinRequest) returns (JoinResponse);
+  rpc Properties (Empty) returns (PropertiesResponse);
+  rpc Command (CommandRequest) returns (CommandResponse);
 }
 
 message JoinRequest {
-	// Map of additional details required for joining the game.
-	// 'name': team name (e.g. "BestTeamName#123$@ś")
-	// 'color': web color (e.g "0xFFFFFF")
-	map < string, string > details = 2;
+  // Map of additional details required for joining the game. Currently it takes the two options 'name' and 'color'.
+  // The name is a string (e.g. "TeamName") that represents the team name. The color is a hexadecimal web color
+  // (e.g "0xAF00AF") that sets the (preferred) color of your team.
+  map < string, string > details = 2;
 }
 
 message JoinResponse {
-	// Authorization.
-	string token = 1;
+  // The token needed for authorizing a command request.
+  string token = 1;
 
-	// The ID assigned to the player upon joining.
-	string player_id = 2;
+  // The ID assigned to a player upon joining.
+  string player_id = 2;
 }
-
 
 message PropertiesResponse {
-	 map < string, string > entries = 1;
-}
-
-message StatusResponse {
-	repeated Player players = 1;
-	repeated Camp camps = 2;
-	repeated Seeker seekers = 3;
-	repeated Goal goals = 4;
-
-	// Number of ticks passed since the game started.
-	double passed_playtime = 5;
+  // The properties entries, contains all property keys mapped to its value.
+  map < string, string > entries = 1;
 }
 
 message Command {
-	// ID of the seeker for which the command is intended.
-	string seeker_id = 2;
+  // ID of the seeker for which the command is intended.
+  string seeker_id = 2;
 
-	Vector2D target = 3;
-	double magnet = 4;
+  // The vector of the new position.
+  Vector2D target = 3;
+
+  // The magnet value. Zero to deactivate the magnet, positive to attract goals and negative to repel goals. Should be
+  // in the range of [-8:1].
+  double magnet = 4;
 }
 
 message CommandRequest {
-	// Token used for authorization purposes.
-	string token = 1;
+  // Token used for authorization purposes.
+  string token = 1;
 
-	// List of commands to be executed.
-	repeated Command commands = 2;
+  // List of commands to be executed.
+  repeated Command commands = 2;
 }
 
+// Returns all changes since the request call and the number of seekers changed by the request.
 message CommandResponse {
-	// The StatusResponse after the command
-	StatusResponse status = 1;
-	// Numbers of seekers changed by the command
-	uint64 seekers_changed = 2;
+  // Collection of all players in the game.
+  repeated Player players = 1;
+  // Collection of all camps in the game.
+  repeated Camp camps = 2;
+  // Collection of all seekers in the game.
+  repeated Seeker seekers = 3;
+  // Collection of all goals in the game.
+  repeated Goal goals = 4;
+
+  // Number of ticks passed since the game started.
+  uint64 passed_playtime = 5;
+
+  // Numbers of seekers changed by the request.
+  uint64 seekers_changed = 6;
 }
 
-message PingResponse {
-	// Timestamp in nanoseconds of the time the ping request was received.
-	uint64 timestamp = 1;
-}
-
+// An empty message; no future information is needed nor provided.
 message Empty {}
