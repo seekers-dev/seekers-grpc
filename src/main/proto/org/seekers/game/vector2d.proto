@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
+
 // The Vector2D message represents a 2D vector.
 message Vector2D {
-	// The X component of the vector.
-	double x = 1;
+  // The X component of the vector.
+  double x = 1;
 
-	// The Y component of the vector.
-	double y = 2;
+  // The Y component of the vector.
+  double y = 2;
 }

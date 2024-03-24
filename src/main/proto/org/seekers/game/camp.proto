@@ -1,23 +1,24 @@
 syntax = "proto3";
 
 import "org/seekers/game/vector2d.proto";
-option java_multiple_files = true;
+
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
+
 // The Camp message represents a camp in the game.
 message Camp {
-	// The unique identifier of the camp.
-	string id = 1;
-  
-	// The ID of the player who owns the camp.
-	string player_id = 2;
-  
-	// The position of the camp in 2D space.
-	Vector2D position = 3;
-  
-	// The width of the camp.
-	double width = 4;
-  
-	// The height of the camp.
-	double height = 5;
+  // The unique identifier of the camp.
+  string id = 1;
+
+  // The ID of the player who owns the camp.
+  string player_id = 2;
+
+  // The position of the camp in 2D space.
+  Vector2D position = 3;
+
+  // The width of the camp.
+  double width = 4;
+
+  // The height of the camp.
+  double height = 5;
 }

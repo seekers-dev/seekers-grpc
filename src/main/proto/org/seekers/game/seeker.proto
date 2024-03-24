@@ -2,23 +2,24 @@ syntax = "proto3";
 
 import "org/seekers/game/physical.proto";
 import "org/seekers/game/vector2d.proto";
-option java_multiple_files = true;
+
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
+
 // The Seeker message represents a seeker object in the game.
 message Seeker {
-	// The physical properties of the seeker.
-	Physical super = 1;
+  // The physical properties of the seeker.
+  Physical super = 1;
 
-	// The ID of the player controlling the seeker.
-	string player_id = 2;
+  // The ID of the player controlling the seeker.
+  string player_id = 2;
 
-	// The magnet value of the seeker.
-	double magnet = 3;
+  // The magnet value of the seeker.
+  double magnet = 3;
 
-	// The target position of the seeker in 2D space.
-	Vector2D target = 4;
+  // The target position of the seeker in 2D space.
+  Vector2D target = 4;
 
-	// The disable counter of the seeker.
-	double disable_counter = 5;
+  // The disable counter of the seeker.
+  double disable_counter = 5;
 }

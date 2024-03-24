@@ -14,57 +14,6 @@
 
 Seekers gRPC is a repository that provides a gRPC-based communication interface for the Seekers application. It enables efficient and reliable communication between clients and servers using the gRPC framework.
 
-## Installation
-
-ℹ️ Note: Replace ``tag`` with the specific release or commit tag you want to use.
-
-### Maven
-
-To use seekers-grpc in your Maven project, you need to add the JitPack repository and the dependency to your pom.xml file.
-
-Add the following repository to the ``<repositories>`` section of your pom.xml file:
-
-```xml
-<repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-
-Then, add the scvis dependency to the ``<dependencies>`` section:
-
-```xml
-<dependency>
-	<groupId>com.github.seekers-dev</groupId>
-	<artifactId>seekers-grpc</artifactId>
-	<version>tag</version>
-</dependency>
-```
-
-### Gradle
-
-To use seekers-grpc in your Gradle project, you need to add the JitPack repository and the dependency to your build.gradle file.
-
-Add the following repository to the repositories section of your ``build.gradle`` file:
-
-```gradle
-allprojects {
-	repositories {
-		maven { url 'https://jitpack.io' }
-	}
-}
-```
-
-Then, add the scvis dependency to the ``dependencies`` section:
-
-```gradle
-dependencies {
-	implementation 'com.github.seekers-dev:seekers-grpc:tag'
-}
-```
-
 ## Contributing
 
 Contributions to Seekers gRPC are welcome! If you want to contribute, please follow these guidelines:
