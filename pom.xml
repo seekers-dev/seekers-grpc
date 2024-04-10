@@ -5,30 +5,34 @@
 	<groupId>seekers-grpc</groupId>
 	<artifactId>seekers-grpc</artifactId>
 	<version>0.1.0</version>
+	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.javaVersion>11</project.javaVersion>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<grpc.version>1.62.2</grpc.version>
 	</properties>
 	<dependencies>
+		<!-- Proto files -->
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
 			<version>4.26.0</version>
 		</dependency>
+		<!-- gRPC -->
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-netty-shaded</artifactId>
+			<version>1.62.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-protobuf</artifactId>
+			<version>1.62.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-stub</artifactId>
+			<version>1.62.2</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.annotation</groupId>
@@ -36,18 +40,6 @@
 			<version>1.3.2</version>
 		</dependency>
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<!-- Grpc -->
-			<dependency>
-				<groupId>io.grpc</groupId>
-				<artifactId>grpc-bom</artifactId>
-				<version>${grpc.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<build>
 		<extensions>
 			<!-- Property Detection -->
@@ -57,7 +49,21 @@
 				<version>1.7.1</version>
 			</extension>
 		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.xolstice.maven.plugins</groupId>
+					<artifactId>protobuf-maven-plugin</artifactId>
+					<version>0.6.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
+			</plugin>
 			<!-- Property Detection -->
 			<plugin>
 				<groupId>kr.motd.maven</groupId>
@@ -77,19 +83,16 @@
 				<artifactId>protobuf-maven-plugin</artifactId>
 				<version>0.6.1</version>
 				<configuration>
+					<pluginId>compile</pluginId>
 					<protocArtifact>
-						com.google.protobuf:protoc:3.22.2:exe:${os.detected.classifier}</protocArtifact>
-					<pluginId>grpc-java</pluginId>
-					<pluginArtifact>
-						io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+						com.google.protobuf:protoc:4.26.0:exe:${os.detected.classifier}
+					</protocArtifact>
 				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>compile-custom</goal>
 							<goal>test-compile</goal>
-							<goal>test-compile-custom</goal>
 						</goals>
 					</execution>
 				</executions>
