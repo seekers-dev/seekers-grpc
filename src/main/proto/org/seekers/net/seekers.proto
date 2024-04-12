@@ -11,8 +11,13 @@ option java_package = "org.seekers.grpc.net";
 
 // Service for communicating with a seekers game.
 service Seekers {
+  // Joins the game, returns your token.
   rpc Join (JoinRequest) returns (JoinResponse);
+
+  // Gets the properties from the server.
   rpc Properties (Empty) returns (PropertiesResponse);
+
+  // Commands any units, returns the current state of the game.
   rpc Command (CommandRequest) returns (CommandResponse);
 }
 
