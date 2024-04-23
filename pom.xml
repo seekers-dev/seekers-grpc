@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-netty-shaded</artifactId>
-			<version>${grpc.version}</version>
+			<version>${grpc.version}</version
 		</dependency>
 		<dependency>
 			<groupId>io.grpc</groupId>
@@ -68,6 +68,11 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.4.1</version>
+			</plugin>
 			<!-- Property Detection -->
 			<plugin>
 				<groupId>kr.motd.maven</groupId>
