@@ -7,9 +7,15 @@
 	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/codeql.yml">
 		<img alt="CodeQL" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/codeql.yml/badge.svg">
 	</a>
+    <a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven-publish.yml">
+        <img alt="Maven Package" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven-publish.yml/badge.svg">
+    </a>
 	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven.yml">
 		<img alt="Java CI with Maven" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven.yml/badge.svg">
 	</a>
+    <img alt="GitHub License" src="https://img.shields.io/github/license/seekers-dev/seekers-grpc">
+    <img alt="GitHub top language" src="https://img.shields.io/badge/proto-100%25-blue">
+    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/seekers-dev/seekers-grpc">
 </p>
 
 Seekers gRPC is a repository that provides a gRPC-based communication interface for the Seekers application. It enables efficient and reliable communication between clients and servers using the gRPC framework.
