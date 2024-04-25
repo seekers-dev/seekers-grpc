@@ -24,25 +24,31 @@ import "org/seekers/game/player.proto";
 import "org/seekers/game/seeker.proto";
 
 option optimize_for = SPEED;
-option java_package = "org.seekers.grpc.net";
+option java_package = "org.seekers.grpc.service";
 
 // Service for communicating with a seekers game.
 service Seekers {
   // Joins the game, returns your token.
   rpc Join (JoinRequest) returns (JoinResponse);
 
-  // Gets the properties from the server.
-  rpc Properties (Empty) returns (PropertiesResponse);
-
   // Commands any units, returns the current state of the game.
   rpc Command (CommandRequest) returns (CommandResponse);
 }
 
 message JoinRequest {
-  // Map of additional details required for joining the game. Currently it takes the two options 'name' and 'color'.
-  // The name is a string (e.g. "TeamName") that represents the team name. The color is a hexadecimal web color
-  // (e.g "0xAF00AF") that sets the (preferred) color of your team.
-  map < string, string > details = 2;
+  // Name of your team
+  optional string name = 1;
+
+  // Preferred color of your team
+  optional string color = 2;
+}
+
+message Section {
+  // Name of the section
+  string name = 1;
+
+  // Entries of the section, delivered in key-value pairs
+  map < string, string > entries = 2;
 }
 
 message JoinResponse {
@@ -51,16 +57,16 @@ message JoinResponse {
 
   // The ID assigned to a player upon joining.
   string player_id = 2;
-}
 
-message PropertiesResponse {
-  // The properties entries, contains all property keys mapped to its value.
-  map < string, string > entries = 1;
+  // The sections of the
+  repeated Section sections = 3;
 }
 
 message Command {
   // ID of the seeker for which the command is intended.
-  string seeker_id = 2;
+  string seeker_id = 1;
+
+  reserved 2; // Compatibility, fields will be reused in later versions
 
   // The vector of the new position.
   Vector2D target = 3;
@@ -95,6 +101,3 @@ message CommandResponse {
   // Numbers of seekers changed by the request.
   uint64 seekers_changed = 6;
 }
-
-// An empty message; no future information is needed nor provided.
-message Empty {}

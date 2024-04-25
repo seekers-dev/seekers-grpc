@@ -31,6 +31,8 @@ message Player {
   // The ID of the camp associated with the player.
   string camp_id = 3;
 
+  reserved 4, 5; // Compatibility, fields will be reused in later versions
+
   // The score of the player.
   uint32 score = 6;
 }
