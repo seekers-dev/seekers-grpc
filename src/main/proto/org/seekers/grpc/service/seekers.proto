@@ -17,11 +17,11 @@
 
 syntax = "proto3";
 
-import "org/seekers/game/vector2d.proto";
-import "org/seekers/game/camp.proto";
-import "org/seekers/game/goal.proto";
-import "org/seekers/game/player.proto";
-import "org/seekers/game/seeker.proto";
+import "org/seekers/grpc/game/vector2d.proto";
+import "org/seekers/grpc/game/camp.proto";
+import "org/seekers/grpc/game/goal.proto";
+import "org/seekers/grpc/game/player.proto";
+import "org/seekers/grpc/game/seeker.proto";
 
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.service";

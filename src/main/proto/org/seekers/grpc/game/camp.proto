@@ -17,7 +17,7 @@
 
 syntax = "proto3";
 
-import "org/seekers/game/vector2d.proto";
+import "org/seekers/grpc/game/vector2d.proto";
 
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
