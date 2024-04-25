@@ -24,6 +24,7 @@ import "org/seekers/grpc/game/player.proto";
 import "org/seekers/grpc/game/seeker.proto";
 
 option optimize_for = SPEED;
+option java_multiple_files = true;
 option java_package = "org.seekers.grpc.service";
 
 // Service for communicating with a seekers game.
