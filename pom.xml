@@ -68,10 +68,11 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<!-- Fix jitpack maven build version -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.4.1</version>
+				<artifactId>maven-wrapper-plugin</artifactId>
+				<version>3.2.0</version>
 			</plugin>
 			<!-- Property Detection -->
 			<plugin>
