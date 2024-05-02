@@ -17,23 +17,26 @@
 
 syntax = "proto3";
 
-import "org/seekers/game/vector2d.proto";
+import "org/seekers/grpc/game/physical.proto";
+import "org/seekers/grpc/game/vector2d.proto";
 
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
 
-// The physical message represents a physical object in the game, like seekers and goals. All physical objects have a
-// position, velocity and acceleration.
-message Physical {
-  // The unique identifier of the object.
-  string id = 1;
+// The Seeker message represents a seeker object in the game.
+message Seeker {
+  // The physical properties of the seeker.
+  Physical super = 1;
 
-  // The acceleration of the object.
-  Vector2D acceleration = 2;
+  // The ID of the player controlling the seeker.
+  string player_id = 2;
 
-  // The position of the object.
-  Vector2D position = 3;
+  // The magnet value of the seeker.
+  double magnet = 3;
 
-  // The velocity of the object.
-  Vector2D velocity = 4;
+  // The target position of the seeker in 2D space.
+  Vector2D target = 4;
+
+  // The disable counter of the seeker.
+  double disable_counter = 5;
 }

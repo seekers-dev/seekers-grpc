@@ -17,20 +17,19 @@
 
 syntax = "proto3";
 
+import "org/seekers/grpc/game/physical.proto";
+
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
 
-// The Player message represents a player in the game. Every player has a number of seekers it controls and a camp.
-message Player {
-  // The unique identifier of the player.
-  string id = 1;
+// The Goal message represents a goal in the game.
+message Goal {
+  // The physical attributes of the goal.
+  Physical super = 1;
 
-  // The IDs of the seekers associated with the player.
-  repeated string seeker_ids = 2;
+  // The ID of the camp associated with the goal.
+  string camp_id = 2;
 
-  // The ID of the camp associated with the player.
-  string camp_id = 3;
-
-  // The score of the player.
-  uint32 score = 6;
+  // The amount of time the goal has been owned.
+  double time_owned = 3;
 }

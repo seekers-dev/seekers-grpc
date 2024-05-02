@@ -17,19 +17,23 @@
 
 syntax = "proto3";
 
-import "org/seekers/game/physical.proto";
+import "org/seekers/grpc/game/vector2d.proto";
 
 option optimize_for = SPEED;
 option java_package = "org.seekers.grpc.game";
 
-// The Goal message represents a goal in the game.
-message Goal {
-  // The physical attributes of the goal.
-  Physical super = 1;
+// The physical message represents a physical object in the game, like seekers and goals. All physical objects have a
+// position, velocity and acceleration.
+message Physical {
+  // The unique identifier of the object.
+  string id = 1;
 
-  // The ID of the camp associated with the goal.
-  string camp_id = 2;
+  // The acceleration of the object.
+  Vector2D acceleration = 2;
 
-  // The amount of time the goal has been owned.
-  double time_owned = 3;
+  // The position of the object.
+  Vector2D position = 3;
+
+  // The velocity of the object.
+  Vector2D velocity = 4;
 }
