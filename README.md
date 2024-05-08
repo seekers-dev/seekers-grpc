@@ -4,10 +4,7 @@
 	<a href="https://jitpack.io/#seekers-dev/seekers-grpc">
 		<img alt="Jitpack" src="https://jitpack.io/v/seekers-dev/seekers-grpc.svg">
 	</a>
-	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/codeql.yml">
-		<img alt="CodeQL" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/codeql.yml/badge.svg">
-	</a>
-    <a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven-publish.yml">
+	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven-publish.yml">
         <img alt="Maven Package" src="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven-publish.yml/badge.svg">
     </a>
 	<a href="https://github.com/seekers-dev/seekers-grpc/actions/workflows/maven.yml">
@@ -19,6 +16,12 @@
 </p>
 
 Seekers gRPC is a repository that provides a gRPC-based communication interface for the Seekers application. It enables efficient and reliable communication between clients and servers using the gRPC framework.
+
+## Installation
+
+Check out the latest release for prebuild binaries.
+
+Alternatively, you can get snapshots from Jitpack.
 
 ## Messages
 
@@ -62,9 +65,7 @@ classDiagram
 ```mermaid
 sequenceDiagram
     Client->> Server: Enters game
-    Server->> Client: Returns token
-    Client--) Server: Requests properties
-    Server--) Client: Returns properties of game
+    Server->> Client: Returns token and properties
     loop Runtime
         Client->> Server: Submit changes with token
         Server->> Client: Returns new state
