@@ -98,7 +98,4 @@ message CommandResponse {
 
   // Number of ticks passed since the game started.
   uint64 passed_playtime = 5;
-
-  // Numbers of seekers changed by the request.
-  uint64 seekers_changed = 6;
 }
