@@ -31,5 +31,5 @@ message Goal {
   string camp_id = 2;
 
   // The amount of time the goal has been owned.
-  double time_owned = 3;
+  uint64 time_owned = 3;
 }

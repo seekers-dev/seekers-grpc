@@ -38,5 +38,5 @@ message Seeker {
   Vector2D target = 4;
 
   // The disable counter of the seeker.
-  double disable_counter = 5;
+  uint32 disable_counter = 5;
 }
