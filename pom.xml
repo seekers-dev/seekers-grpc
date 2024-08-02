@@ -4,9 +4,40 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.seekers</groupId>
 	<artifactId>seekers-grpc</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<packaging>jar</packaging>
-	
+
+	<name>Seekers API</name>
+	<description>API definition of the seekers game.</description>
+	<url>https://github.com/seekers-dev/seekers-grpc</url>
+	<inceptionYear>2023</inceptionYear>
+
+	<scm>
+		<connection>scm:git:git://github.com/seekers-dev/seekers-grpc.git</connection>
+		<developerConnection>scm:git:ssh://github.com:seekers-dev/seekers-grpc.git</developerConnection>
+		<url>http://github.com/seekers-dev/seekers-grpc/tree/master</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>Karl Zschiebsch</name>
+			<organization>Seekers Dev</organization>
+			<organizationUrl>https://github.com/seekers-dev</organizationUrl>
+		</developer>
+		<developer>
+			<name>Bela Tollkien</name>
+			<organization>Seekers Dev</organization>
+			<organizationUrl>https://github.com/seekers-dev</organizationUrl>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>GNU General Public License</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+		</license>
+	</licenses>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -16,13 +47,30 @@
 	</properties>
 	
 	<distributionManagement>
-		<repository>
+		<!--repository>
 			<id>github</id>
-			<name>GitHub Kiyotoko Apache Maven Packages</name>
+			<name>GitHub Seekers Dev Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/seekers-dev/seekers-grpc</url>
+		</repository-->
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
-	
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Proto files -->
+			<dependency>
+				<groupId>io.grpc</groupId>
+				<artifactId>grpc-bom</artifactId>
+				<version>${grpc.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<!-- Proto files -->
 		<dependency>
@@ -55,22 +103,9 @@
 		</dependency>
 	</dependencies>
 	
-	<dependencyManagement>
-		<dependencies>
-			<!-- Proto files -->
-			<dependency>
-				<groupId>io.grpc</groupId>
-				<artifactId>grpc-bom</artifactId>
-				<version>${grpc.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	
 	<build>
 		<extensions>
-			<!-- Property Detection -->
+			<!-- Property detection -->
 			<extension>
 				<groupId>kr.motd.maven</groupId>
 				<artifactId>os-maven-plugin</artifactId>
@@ -96,7 +131,37 @@
 				<artifactId>maven-wrapper-plugin</artifactId>
 				<version>3.3.1</version>
 			</plugin>
-			<!-- Property Detection -->
+			<!-- Publishing artifact to Sonatype and GitHub -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
+			<!-- Property detection -->
 			<plugin>
 				<groupId>kr.motd.maven</groupId>
 				<artifactId>os-maven-plugin</artifactId>
