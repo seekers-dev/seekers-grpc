@@ -25,7 +25,7 @@ option java_package = "org.seekers.grpc.game";
 // The Goal message represents a goal in the game.
 message Goal {
   // The physical attributes of the goal.
-  Physical super = 1;
+  Physical physical = 1;
 
   // The ID of the camp associated with the goal.
   string camp_id = 2;

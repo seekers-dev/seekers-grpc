@@ -26,17 +26,23 @@ option java_package = "org.seekers.grpc.game";
 // The Seeker message represents a seeker object in the game.
 message Seeker {
   // The physical properties of the seeker.
-  Physical super = 1;
+  Physical physical = 1;
 
   // The ID of the player controlling the seeker.
   string player_id = 2;
 
-  // The magnet value of the seeker.
+  // The magnet value of the seeker. If positive, the magnet is
+  // attractive, if negative, the magnet is repulsive. If this field
+  // is null, it implies that the magnet is disabled. The magnet can be
+  // in the range of -[1:8].
   double magnet = 3;
 
-  // The target position of the seeker in 2D space.
+  // The target position of the seeker in 2D space. In other words,
+  // this is the destination of this seeker.
   Vector2D target = 4;
 
-  // The disable counter of the seeker.
-  uint32 disable_counter = 5;
+  // The disable counter of the seeker measured in the number of ticks.
+  // The counter shows how many ticks must pass in the game to reactivate
+  // the seeker again after it was disabled.
+  uint64 disable_counter = 5;
 }

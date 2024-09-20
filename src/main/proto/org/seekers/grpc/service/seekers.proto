@@ -72,8 +72,8 @@ message Command {
   // The vector of the new position.
   Vector2D target = 3;
 
-  // The magnet value. Zero to deactivate the magnet, positive to attract goals and negative to repel goals. Should be
-  // in the range of [-8:1].
+  // The magnet value. Zero to deactivate the magnet, positive to attract
+  // goals and negative to repel goals. Should be in the range of [-8:1].
   double magnet = 4;
 }
 
@@ -85,7 +85,8 @@ message CommandRequest {
   repeated Command commands = 2;
 }
 
-// Returns all changes since the request call and the number of seekers changed by the request.
+// Returns all changes since the request call and the number of seekers
+// changed by the request.
 message CommandResponse {
   // Collection of all players in the game.
   repeated Player players = 1;
