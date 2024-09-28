@@ -1,4 +1,4 @@
-<h1 align=center>Seekers gRPC</h1>
+<h1 align=center>Seekers API</h1>
 
 <p align=center>
 	<a href="https://jitpack.io/#seekers-dev/seekers-grpc">
@@ -15,11 +15,11 @@
     <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/seekers-dev/seekers-grpc">
 </p>
 
-Seekers gRPC is a repository that provides a gRPC-based communication interface for the Seekers application. It enables efficient and reliable communication between clients and servers using the gRPC framework.
+Seekers API is a repository that provides a gRPC-based api communication interface for the Seekers application. It enables efficient and reliable communication between clients and servers using the gRPC framework.
 
 ## Installation
 
-Check out the latest release for prebuild binaries.
+Check out the latest release for prebuilt packages.
 
 Alternatively, you can get snapshots from Jitpack.
 
