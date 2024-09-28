@@ -17,10 +17,10 @@
 
 syntax = "proto3";
 
-import "org/seekers/grpc/game/physical.proto";
+import "org/seekers/api/physical.proto";
 
 option optimize_for = SPEED;
-option java_package = "org.seekers.grpc.game";
+option java_package = "org.seekers.api";
 
 // The Goal message represents a goal in the game.
 message Goal {

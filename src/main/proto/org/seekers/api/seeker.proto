@@ -17,11 +17,11 @@
 
 syntax = "proto3";
 
-import "org/seekers/grpc/game/physical.proto";
-import "org/seekers/grpc/game/vector2d.proto";
+import "org/seekers/api/physical.proto";
+import "org/seekers/api/vector2d.proto";
 
 option optimize_for = SPEED;
-option java_package = "org.seekers.grpc.game";
+option java_package = "org.seekers.api";
 
 // The Seeker message represents a seeker object in the game.
 message Seeker {

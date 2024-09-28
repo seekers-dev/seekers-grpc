@@ -18,7 +18,7 @@
 syntax = "proto3";
 
 option optimize_for = SPEED;
-option java_package = "org.seekers.grpc.game";
+option java_package = "org.seekers.api";
 
 // The Player message represents a player in the game. Every player has a number of seekers it controls and a camp.
 message Player {

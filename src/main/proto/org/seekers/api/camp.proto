@@ -17,10 +17,10 @@
 
 syntax = "proto3";
 
-import "org/seekers/grpc/game/vector2d.proto";
+import "org/seekers/api/vector2d.proto";
 
 option optimize_for = SPEED;
-option java_package = "org.seekers.grpc.game";
+option java_package = "org.seekers.api";
 
 // The Camp message represents a camp in the game.
 message Camp {

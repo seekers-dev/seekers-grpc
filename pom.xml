@@ -3,19 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.seekers</groupId>
-	<artifactId>seekers-grpc</artifactId>
-	<version>0.1.1</version>
+	<artifactId>seekers-api</artifactId>
+	<version>0.1.2</version>
 	<packaging>jar</packaging>
 
 	<name>Seekers API</name>
 	<description>API definition of the seekers game.</description>
-	<url>https://github.com/seekers-dev/seekers-grpc</url>
+	<url>https://github.com/seekers-dev/seekers-api</url>
 	<inceptionYear>2023</inceptionYear>
 
 	<scm>
-		<connection>scm:git:git://github.com/seekers-dev/seekers-grpc.git</connection>
-		<developerConnection>scm:git:ssh://github.com:seekers-dev/seekers-grpc.git</developerConnection>
-		<url>http://github.com/seekers-dev/seekers-grpc/tree/master</url>
+		<connection>scm:git:git://github.com/seekers-dev/seekers-api.git</connection>
+		<developerConnection>scm:git:ssh://github.com:seekers-dev/seekers-api.git</developerConnection>
+		<url>https://github.com/seekers-dev/seekers-api/tree/master</url>
 	</scm>
 
 	<developers>
@@ -47,14 +47,10 @@
 	</properties>
 	
 	<distributionManagement>
-		<!--repository>
+		<repository>
 			<id>github</id>
 			<name>GitHub Seekers Dev Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/seekers-dev/seekers-grpc</url>
-		</repository-->
-		<repository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<url>https://maven.pkg.github.com/seekers-dev/seekers-api</url>
 		</repository>
 	</distributionManagement>
 

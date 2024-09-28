@@ -17,15 +17,15 @@
 
 syntax = "proto3";
 
-import "org/seekers/grpc/game/vector2d.proto";
-import "org/seekers/grpc/game/camp.proto";
-import "org/seekers/grpc/game/goal.proto";
-import "org/seekers/grpc/game/player.proto";
-import "org/seekers/grpc/game/seeker.proto";
+import "org/seekers/api/vector2d.proto";
+import "org/seekers/api/camp.proto";
+import "org/seekers/api/goal.proto";
+import "org/seekers/api/player.proto";
+import "org/seekers/api/seeker.proto";
 
 option optimize_for = SPEED;
 option java_multiple_files = true;
-option java_package = "org.seekers.grpc.service";
+option java_package = "org.seekers.api";
 
 // Service for communicating with a seekers game.
 service Seekers {
