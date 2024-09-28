@@ -3,6 +3,7 @@
 ### Project
 
 - Removed Sonatype
+- Added python build scripts
 
 ## v0.1.2
 
