@@ -1,10 +1,10 @@
 setlocal EnableDelayedExpansion
 
 rem Remove the 'stubs' directory if it exists, and create a new one
-if exist stubs (
-    rd /s /q stubs
+if exist api (
+    rd /s /q api
 )
-mkdir stubs
+mkdir api
 
 rem Base directory to start the search
 set baseDir=src\main\proto
@@ -19,11 +19,11 @@ for /r %baseDir% %%f in (*.proto) do (
 )
 
 rem Run the grpc_tools.protoc command
-python -m grpc_tools.protoc ^
-   --python_out=stubs ^
-   --grpc_python_out=stubs ^
+.\venv\bin\python -m grpc_tools.protoc ^
+   --python_out=api ^
+   --grpc_python_out=api ^
    --proto_path=%baseDir% ^
-   --mypy_out=stubs ^
+   --mypy_out=api ^
    --experimental_allow_proto3_optional ^
    !protoFiles!
 
