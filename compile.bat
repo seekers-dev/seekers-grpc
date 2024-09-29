@@ -1,6 +1,6 @@
 rem Checkout pip requirements
 python -m venv venv
-.\venv\Scrits\pip install -r requirements.txt
+.\venv\Scripts\pip install -r requirements.txt
 
 setlocal EnableDelayedExpansion
 
