@@ -1,3 +1,7 @@
+rem Checkout pip requirements
+python -m venv venv
+.\venv\Scrits\pip install -r requirements.txt
+
 setlocal EnableDelayedExpansion
 
 rem Remove the 'stubs' directory if it exists, and create a new one
@@ -19,19 +23,20 @@ for /r %baseDir% %%f in (*.proto) do (
 )
 
 rem Run the grpc_tools.protoc command
-.\venv\bin\python -m grpc_tools.protoc ^
+.\venv\Scripts\python -m grpc_tools.protoc ^
    --python_out=api ^
    --grpc_python_out=api ^
    --proto_path=%baseDir% ^
+   --plugin=protoc-gen-mypy=.\venv\Scripts\protoc-gen-mypy ^
    --mypy_out=api ^
    --experimental_allow_proto3_optional ^
    !protoFiles!
 
 rem Invoke protol to fix broken imports
-protol ^
+.\venv\Scripts\protol ^
   --create-package ^
   --in-place ^
-  --python-out stubs ^
+  --python-out api ^
   protoc --proto-path=%baseDir% !protoFiles! --experimental_allow_proto3_optional
 
 endlocal
